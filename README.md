@@ -22,7 +22,7 @@ r copy 3 file của thằng fpt vô thư mục src
 edit  #INCLUDE_DIRS include in /catkin_ws/src/mastering_ros_demo_pkg
 
 chạy lại catkin_make
-echo "source ~/catkin_ws/devel/stuo.bash" >> ~/.bashrc
+To add the workspace to your ROS environment you need to source the generated setup file:
 echo "source ~/catkin_ws/devel/setup.bash" >> ~/.bashrc
 source ~/.bashrc
 roslaunch lane_detect lane_detect.launch
