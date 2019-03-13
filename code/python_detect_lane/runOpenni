@@ -1,0 +1,4 @@
+link examble: https://github.com/elmonkey/Python_OpenNI2/blob/master/samples/ex2_rgb_stream.py
+install openni => sudo pip install openni => sudo pip install primesense
+
+install tensorflow => sudo pip install tensorflow

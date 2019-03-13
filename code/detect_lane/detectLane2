@@ -1,0 +1,69 @@
+#include <iostream>
+#include <opencv2/opencv.hpp>
+
+using namespace std;
+using namespace cv;
+Mat SobelXY(Mat segImage);
+int main() {
+
+
+     //   Mat frame= imread("/home/hoaiphuong/Desktop/photos/10.png",CV_LOAD_IMAGE_COLOR);;
+     //
+    Mat frame= imread("/home/hoaiphuong/Desktop/photos/9.png",THRESH_BINARY);
+    imshow("frame", frame);
+        Mat source;
+        Rect Roi(0,162,frame.cols,frame.rows-162);
+        // Mat source = imread("/home/hoaiphuong/Desktop/photos/10.png",CV_LOAD_IMAGE_COLOR);
+        source=frame(Roi);
+        imshow("source", source);
+    Mat imgThresholded;
+        /*
+        Mat imgHSV;
+
+        cvtColor(source, imgHSV, COLOR_BGR2HLS); //Convert the captured frame from BGR to HSV
+
+
+
+
+        inRange(imgHSV, Scalar(0, 238, 0), Scalar(178, 255, 255), imgThresholded); //Threshold the image
+
+        erode(imgThresholded, imgThresholded, getStructuringElement(MORPH_ELLIPSE, Size(7, 7)));
+        dilate(imgThresholded, imgThresholded, getStructuringElement(MORPH_ELLIPSE, Size(7, 7)));
+
+        //morphological closing (fill small holes in the foreground)
+        dilate(imgThresholded, imgThresholded, getStructuringElement(MORPH_ELLIPSE, Size(7, 7)));
+        erode(imgThresholded, imgThresholded, getStructuringElement(MORPH_ELLIPSE, Size(7, 7)));
+
+        imshow("imgThresholded", imgThresholded);
+         */
+        imgThresholded=source.clone();
+        int xPosition=0;
+        int max=0;
+
+    for (int i=0; i< imgThresholded.cols;i++)
+    {
+        if(countNonZero(imgThresholded.col(i))>max)
+        {
+            xPosition= i;
+            max=countNonZero(imgThresholded.col(i));
+
+        }
+
+    }
+    int nwindows=9;
+    int windowHeight= imgThresholded.rows/nwindows;
+
+    cout<< imgThresholded.size()<< endl;
+    for (int i=0; i< imgThresholded.rows;i++)
+    {
+       // imgThresholded.at<uchar>(Point(xPosition,i)) = 255;
+       // imgThresholded.at<uchar>(Point(xPosition+1,i)) = 255;
+    }
+
+    imshow("sour1ce", imgThresholded);
+
+    waitKey(0);
+
+    return 0;
+}
+
